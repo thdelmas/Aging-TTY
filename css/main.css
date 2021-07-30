@@ -1,56 +1,24 @@
 body {
-	background-color: black;
-	background-image: radial-gradient(
-		rgba(0,150,0, 0.25), rgba(0,150,0, 0.0) 120%
-	);
-	height: 100vh;
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
-	color: #008800;
-	font: 1.3rem monospace;
-	text-shadow: 0 0 3px #0A0;
-}
-pre {
-	margin: 0;
-	z-index: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 2rem;
-	height: 100vh;
-  /*This part is important for centering*/
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-output {
-	font: 3rem monospace;
-	overflow: hidden; /* Ensures the content is not revealed until the animation */
-	border-right: 1rem solid #080; /* The typwriter cursor */
-	white-space: nowrap; /* Keeps the content on a single line */
-	margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-	letter-spacing: .15em; /* Adjust as needed */
-	animation: typing 2s steps(22), blink .5s step-end infinite alternate;
-	white-space: pre-line;
-}
-.grid {
 	height: 100vh;
 	width: 100vw;
-	margin: 0;
-	background-image: repeating-linear-gradient(#000 0 0px, transparent 0.5px 100%), repeating-linear-gradient(90deg, #000 0 0px, transparent 1px 100%);
-	background-size: 2px 2px;
-	z-index: 1;
-	position: absolute;
-	top: 0;
-	left: 0;
+	background: black;
 }
 
-@keyframes typing {
-	from { width: 0 }
-  }
-  
-  /* The typewriter cursor effect */
-  @keyframes blink {
-	50% { border-color: transparent; }
-  }
+#grid {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	width: 100vw;
+	background: repeating-linear-gradient(transparent, rgba(0,125,0,0.2) 2px),
+            repeating-linear-gradient(0.25turn, transparent, rgba(125,0,125,0.1) 1px);
+}
+
+#output {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	width: 100vw;
+	background: radial-gradient(circle, rgba(0,125,0,0.5), rgba(0,125,0,0.25) 25%, rgba(0,125,0,0) 75%)	
+}
