@@ -4,14 +4,53 @@ var typewriter = new Typewriter(app, {
     loop: true
 });
 
+var poem = `
+Vivre et revivre, 
+Encore et encore, 
+Tes torts et remords. 
+Encore pire, 
+Que tes pires souvenirs. 
+Les émotions s'enchaînent, 
+Les pensées se gangrènent, 
+La boucle commence, 
+Voilà la démence. 
+Flash-back, tu raques, 
+Pensées défoncées. 
+Cloisonné, prisonnier
+De tes propres pensées, 
+Encore et encore, 
+Pensées avides, 
+Pensées acides. 
+La boucle commence, 
+Voilà la démence. 
+Un mot, un sursaut, 
+Un sanglot. 
+Enchaîné, traîné, 
+Malmené, torturé. 
+Mourir et mourir
+Encore et encore, 
+Des souvenirs d'or, 
+Un rire, des sourires. 
+Souffrance. 
+La boucle commence, 
+Voilà la démence. 
+Aucun acte, le corps intact, 
+Sans un mot
+L'esprit en lambeaux, 
+Il pleure, attends son heure
+Assis sur le trottoir, sans espoir.
+Voilà une bouteille, 
+Petite merveille, 
+ Le voilà, il s'endort ivre. 
+Encore et encore. 
+La boucle recommence, 
+Toc Toc, c'est la démence qui avance.
+`
+var tab = poem.split(/\r?\n/);
 
-
-typewriter.typeString('Hello World!')
-    .pauseFor(2500)
-    .deleteAll()
-    .typeString('Strings can be removed')
-    .pauseFor(2500)
-    .deleteChars(7)
-    .typeString('<strong>altered!</strong>')
-    .pauseFor(2500)
-    .start();
+typewriter.options.autoStart = false;
+typewriter.options.strings = tab;
+tab.forEach(element => {
+    typewriter.typeString(element).pause().deleteAll();
+});
+typewriter.start();

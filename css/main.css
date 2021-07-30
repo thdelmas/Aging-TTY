@@ -4,6 +4,7 @@ body {
 	height: 100vh;
 	width: 100vw;
 	background: black;
+	overflow: hidden;
 }
 
 #grid {
@@ -11,17 +12,21 @@ body {
 	padding: 0;
 	height: 100vh;
 	width: 100vw;
-	background: repeating-linear-gradient(transparent, rgba(0,125,0,0.1) 2px),
-            repeating-linear-gradient(0.25turn, transparent, rgba(125,0,125,0.1) 1px);
+	background: repeating-linear-gradient(transparent, rgba(0,125,0,0.2) 2px),
+			repeating-linear-gradient(0.25turn, transparent, rgba(125,0,125,0.2) 1px);
+	overflow: hidden;
 }
 
 #output {
 	margin: 0;
-	padding: 10% 10% 10% 10%;
 	height: 100vh;
 	max-width: 100vw;
+	padding-top: 45vh;
+	text-align: center;
+	justify-content: center;
 	background: radial-gradient(circle, rgba(0,125,0,0),  rgba(0,125,0,0.1) 45%,  rgba(0,125,0,0.1) 55%, rgba(0,125,0,0));
 	color: white;
-	font: 5em Monospace;
+	font: 10vh Monospace;
 	white-space: pre-line;
+	overflow: hidden;
 }
