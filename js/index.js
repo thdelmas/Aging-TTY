@@ -1,7 +1,12 @@
+
 var app = document.getElementById('output');
 
 var typewriter = new Typewriter(app, {
-    loop: true
+    autoStart: true,
+    loop: false,
+    cursor: '·',
+    typingSpeed: 'natural',
+    deleteSpeed: 1
 });
 
 var poem = `
@@ -41,16 +46,37 @@ Il pleure, attends son heure
 Assis sur le trottoir, sans espoir.
 Voilà une bouteille, 
 Petite merveille, 
- Le voilà, il s'endort ivre. 
+Le voilà, il s'endort ivre. 
 Encore et encore. 
 La boucle recommence, 
-Toc Toc, c'est la démence qui avance.
+Toc . . .
+Toc . . .
+C'est la démence qui avance.
 `
 var tab = poem.split(/\r?\n/);
 
-typewriter.options.autoStart = false;
-typewriter.options.strings = tab;
-tab.forEach(element => {
-    typewriter.typeString(element).pause().deleteAll();
+lenToPrint = 0;
+tab.forEach((elem, index) => {
+    let lenToPrint;
+    let lenToDelete;
+    tab[index] = tab[index].trim()
+    if (index == 0) {
+        cmplen = parseInt(0);
+        lenToDelete = parseInt(0);
+    }
+    else {
+        lenlen = new Promise((str1, str2) => {
+            let i = 0;
+            while (str1[i] == str2[i]) {
+                i++;
+            }
+            return parseInt(i, 10);
+        });
+        cmplen = await lenlen;
+        lenToDelete = parseInt(tab[index - 1] - cmplen);
+    }
+    lenToPrint = parseInt(tab[index] - cmplen);
+    console.log(cmplen, lenToPrint, lenToDelete);
+    typewriter.typeString(tab[index].substring(cmplen + 1)).pauseFor(420);
 });
-typewriter.start();
+    typewriter.start();
