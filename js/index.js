@@ -1,49 +1,46 @@
 var poem = `
 TOC...
-
 TOC...
-
-Wake up, Teo...
 Wake up, Teo...
 Vivre et revivre,
-Encore et encore, 
-Tes torts et remords. 
-Encore pire, 
-Que tes pires souvenirs. 
-Les émotions s'enchaînent, 
-Les pensées se gangrènent, 
-La boucle commence, 
-Voilà la démence. 
-Flash-back, tu raques, 
-Pensées défoncées. 
+Encore et encore,
+Tes torts et remords.
+Encore pire,
+Que tes pires souvenirs.
+Les émotions s'enchaînent,
+Les pensées se gangrènent,
+La boucle commence,
+Voilà la démence.
+Flash-back, tu raques,
+Pensées défoncées.
 Cloisonné, prisonnier
-De tes propres pensées, 
-Encore et encore, 
-Pensées avides, 
-Pensées acides. 
-La boucle commence, 
-Voilà la démence. 
-Un mot, un sursaut, 
-Un sanglot. 
-Enchaîné, traîné, 
-Malmené, torturé. 
+De tes propres pensées,
+Encore et encore,
+Pensées avides,
+Pensées acides.
+La boucle commence,
+Voilà la démence.
+Un mot, un sursaut,
+Un sanglot.
+Enchaîné, traîné,
+Malmené, torturé.
 Mourir et mourir
-Encore et encore, 
-Des souvenirs d'or, 
-Un rire, des sourires. 
-Souffrance. 
-La boucle commence, 
-Voilà la démence. 
-Aucun acte, le corps intact, 
+Encore et encore,
+Des souvenirs d'or,
+Un rire, des sourires.
+Souffrance.
+La boucle commence,
+Voilà la démence.
+Aucun acte, le corps intact,
 Sans un mot
-L'esprit en lambeaux, 
+L'esprit en lambeaux,
 Il pleure, attends son heure
 Assis sur le trottoir, sans espoir.
-Voilà une bouteille, 
-Petite merveille, 
-Le voilà, il s'endort ivre. 
-Encore et encore. 
-La boucle recommence, 
+Voilà une bouteille,
+Petite merveille,
+Le voilà, il s'endort ivre.
+Encore et encore.
+La boucle recommence,
 TOC...
 
 TOC...
@@ -77,12 +74,15 @@ const instance = new Typewriter('#output', {
 
 var dc = 0;
 tab.forEach((element, index) => {
+    tt = 2100
     if (element) {
         dc = (element.length - commonLength(element, tab[index + 1]))
-        tt = (420*element.length)
+        
     } else {
         dc = 0
-        tt = 2100
+    }
+    if (element === "TOC..." || element === "Wake up, Teo...") {
+        tt *= 2
     }
     if (dc)
     {
