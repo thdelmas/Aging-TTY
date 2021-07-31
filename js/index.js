@@ -1,7 +1,9 @@
-var poem = `
-TOC...
-TOC...
-Wake up, Teo...
+var poem = `Wake up, Teo...
+The Matrix has you...
+
+Follow the white rabbit.
+Tock, tock, Teo.
+
 Vivre et revivre,
 Encore et encore,
 Tes torts et remords.
@@ -41,10 +43,9 @@ Petite merveille,
 Le voilà, il s'endort ivre.
 Encore et encore.
 La boucle recommence,
-TOC...
-
-TOC...
-
+Tock, tock, Teo.
+Tock, tock, Teo.
+Tock, tock, Teo.
 C'est la démence qui avance.
 `
 var tab = poem.split(/\r?\n/);
@@ -54,7 +55,6 @@ function commonLength(s1, s2) {
     {
         i++;
     }
-    console.log(i)
     return i;
 }
 
@@ -74,15 +74,15 @@ const instance = new Typewriter('#output', {
 
 var dc = 0;
 tab.forEach((element, index) => {
-    tt = 2100
+    tt = 3000
     if (element) {
         dc = (element.length - commonLength(element, tab[index + 1]))
         
     } else {
         dc = 0
     }
-    if (element === "TOC..." || element === "Wake up, Teo...") {
-        tt *= 2
+    if (!element || element === "Wake up, Teo..." || element === "The Matrix has you..." || element === "Follow the white rabbit.") {
+        tt *= (!element ? 2.1 : 4.2)
     }
     if (dc)
     {
@@ -96,4 +96,4 @@ tab.forEach((element, index) => {
 });
 instance.start();
 }
-setTimeout(runner, 1000)
+setTimeout(runner, 2500)
