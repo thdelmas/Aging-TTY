@@ -1,16 +1,11 @@
-
-var app = document.getElementById('output');
-
-var typewriter = new Typewriter(app, {
-    autoStart: true,
-    loop: false,
-    cursor: '·',
-    typingSpeed: 'natural',
-    deleteSpeed: 1
-});
-
 var poem = `
-Vivre et revivre, 
+TOC...
+
+TOC...
+
+Wake up, Teo...
+Wake up, Teo...
+Vivre et revivre,
 Encore et encore, 
 Tes torts et remords. 
 Encore pire, 
@@ -49,34 +44,56 @@ Petite merveille,
 Le voilà, il s'endort ivre. 
 Encore et encore. 
 La boucle recommence, 
-Toc . . .
-Toc . . .
+TOC...
+
+TOC...
+
 C'est la démence qui avance.
 `
 var tab = poem.split(/\r?\n/);
 
-lenToPrint = 0;
-tab.forEach((elem, index) => {
-    let lenToPrint;
-    let lenToDelete;
-    tab[index] = tab[index].trim()
-    if (index == 0) {
-        cmplen = parseInt(0);
-        lenToDelete = parseInt(0);
+function commonLength(s1, s2) {
+    for (var i = 0; i < s1.length && i < s2.length && s1[i] === s2[i];)
+    {
+        i++;
     }
-    else {
-        lenlen = new Promise((str1, str2) => {
-            let i = 0;
-            while (str1[i] == str2[i]) {
-                i++;
-            }
-            return parseInt(i, 10);
-        });
-        cmplen = await lenlen;
-        lenToDelete = parseInt(tab[index - 1] - cmplen);
-    }
-    lenToPrint = parseInt(tab[index] - cmplen);
-    console.log(cmplen, lenToPrint, lenToDelete);
-    typewriter.typeString(tab[index].substring(cmplen + 1)).pauseFor(420);
+    console.log(i)
+    return i;
+}
+
+function runner() {
+const instance = new Typewriter('#output', {
+    loop: true,
+    deleteSpeed: 0
 });
-    typewriter.start();
+
+/*  instance.typeString('Hello world!')
+    .pauseFor(1000)
+    .deleteAll()
+    .typeString('Another message here...')
+    .pauseFor(1000)
+    .start();
+*/
+
+var dc = 0;
+tab.forEach((element, index) => {
+    if (element) {
+        dc = (element.length - commonLength(element, tab[index + 1]))
+        tt = (420*element.length)
+    } else {
+        dc = 0
+        tt = 2100
+    }
+    if (dc)
+    {
+        instance.typeString(element.substring(index == 0 ? 0 : commonLength(element, tab[index - 1])))
+        .pauseFor(tt)
+        .deleteChars(dc)
+    } else {
+        instance.typeString(element.substring(index == 0 ? 0 : commonLength(element, tab[index - 1])))
+        .pauseFor(tt)
+    }
+});
+instance.start();
+}
+setTimeout(runner, 1000)
